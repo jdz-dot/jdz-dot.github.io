@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>奶香资源站</title>
+  <style>
+    body { margin:0; font-family: "Microsoft YaHei", Arial, sans-serif; background:#f9f9f9; }
+    a { text-decoration:none; color:inherit; }
+    header { background:#f36; color:#fff; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; }
+    header h1 { font-size:22px; margin:0; }
+    header .search { display:flex; gap:5px; }
+    header input { padding:6px; border:none; border-radius:3px; }
+    header button { padding:6px 12px; border:none; background:#fff; color:#f36; border-radius:3px; cursor:pointer; }
+    nav { background:#ff6699; display:flex; flex-wrap:wrap; padding:10px 20px; gap:15px; }
+    nav a { color:#fff; font-weight:bold; }
+    .categories { display:grid; grid-template-columns: repeat(auto-fill,minmax(120px,1fr)); gap:10px; padding:15px 20px; background:#fff; border-bottom:2px solid #eee; }
+    .categories button { padding:8px; border:none; background:#ffe6f0; border-radius:5px; cursor:pointer; transition:0.3s; font-size:14px; }
+    .categories button:hover { background:#f36; color:#fff; }
+    .notice { margin:15px 20px; background:#fff8fb; padding:10px; border:1px solid #fcd; border-radius:5px; font-size:14px; line-height:1.6; }
+    table { width:calc(100% - 40px); margin:20px auto; border-collapse:collapse; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
+    th, td { padding:10px; border:1px solid #eee; text-align:center; font-size:14px; }
+    th { background:#ffe6f0; font-weight:bold; }
+    tbody tr:hover { background:#fff5fa; }
+    footer { text-align:center; padding:15px; font-size:13px; color:#666; background:#fefefe; margin-top:20px; border-top:1px solid #eee; }
+  </style>
+</head>
+<body>
+  <!-- 顶部 -->
+  <header>
+    <h1>奶香资源站</h1>
+    <div class="search">
+      <input type="text" placeholder="请输入影片名称...">
+      <button>搜索</button>
+    </div>
+  </header>
+  
+  <!-- 导航栏 -->
+  <nav>
+    <a href="#">首页</a>
+    <a href="#">演示站</a>
+    <a href="#">采集教程</a>
+    <a href="#">苹果cmsv10模版</a>
+    <a href="#">TG交流群</a>
+    <a href="#">福利赞助</a>
+  </nav>
+  
+  <!-- 分类标签 -->
+  <section class="categories">
+    <button>国产影片</button>
+    <button>中文字幕</button>
+    <button>欧美影片</button>
+    <button>动漫专区</button>
+    <button>VR专区</button>
+    <button>日本有码</button>
+    <button>日本无码</button>
+    <button>制服诱惑</button>
+    <button>学生妹</button>
+    <button>SM调教</button>
+    <button>人妻熟女</button>
+    <button>剧情大片</button>
+  </section>
+  
+  <!-- 公告 -->
+  <section class="notice">
+    📢 欢迎访问本站！本站为静态资源站演示模版，所有数据需手动更新。<br>
+    👉 如果需要展示更多功能，可以扩展分页、分类页。<br>
+    👉 本页面支持直接部署到 GitHub Pages，无需后台。
+  </section>
+  
+  <!-- 表格 -->
+  <table>
+    <thead>
+      <tr>
+        <th>影片名称</th>
+        <th>分类</th>
+        <th>更新时间</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>示例影片 001</td>
+        <td>中文字幕</td>
+        <td>2025-08-18</td>
+        <td><a href="#">查看</a></td>
+      </tr>
+      <tr>
+        <td>示例影片 002</td>
+        <td>欧美影片</td>
+        <td>2025-08-17</td>
+        <td><a href="#">查看</a></td>
+      </tr>
+      <tr>
+        <td>示例影片 003</td>
+        <td>国产影片</td>
+        <td>2025-08-15</td>
+        <td><a href="#">查看</a></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <!-- 页脚 -->
+  <footer>
+    © 2025 奶香资源站 - 静态演示模版 | GitHub Pages 部署
+  </footer>
+</body>
+</html>
