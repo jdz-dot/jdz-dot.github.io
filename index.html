@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>奶香资源站</title>
   <style>
-    body { margin:0; font-family: "Microsoft YaHei", Arial, sans-serif; background:#f9f9f9; }
+    body { margin:0; font-family:"Microsoft YaHei",Arial,sans-serif; background:#f9f9f9; }
     a { text-decoration:none; color:inherit; }
     header { background:#f36; color:#fff; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; }
     header h1 { font-size:22px; margin:0; }
@@ -17,11 +17,16 @@
     .categories { display:grid; grid-template-columns: repeat(auto-fill,minmax(120px,1fr)); gap:10px; padding:15px 20px; background:#fff; border-bottom:2px solid #eee; }
     .categories button { padding:8px; border:none; background:#ffe6f0; border-radius:5px; cursor:pointer; transition:0.3s; font-size:14px; }
     .categories button:hover { background:#f36; color:#fff; }
+    .categories button.active { background:#f36; color:#fff; font-weight:bold; }
     .notice { margin:15px 20px; background:#fff8fb; padding:10px; border:1px solid #fcd; border-radius:5px; font-size:14px; line-height:1.6; }
     table { width:calc(100% - 40px); margin:20px auto; border-collapse:collapse; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
     th, td { padding:10px; border:1px solid #eee; text-align:center; font-size:14px; }
     th { background:#ffe6f0; font-weight:bold; }
     tbody tr:hover { background:#fff5fa; }
+    .pagination { display:flex; justify-content:center; gap:8px; margin:20px; }
+    .pagination a { padding:6px 12px; border:1px solid #ddd; border-radius:4px; background:#fff; color:#f36; font-size:14px; }
+    .pagination a:hover { background:#f36; color:#fff; }
+    .pagination .active { background:#f36; color:#fff; font-weight:bold; }
     footer { text-align:center; padding:15px; font-size:13px; color:#666; background:#fefefe; margin-top:20px; border-top:1px solid #eee; }
   </style>
 </head>
@@ -30,8 +35,8 @@
   <header>
     <h1>奶香资源站</h1>
     <div class="search">
-      <input type="text" placeholder="请输入影片名称...">
-      <button>搜索</button>
+      <input type="text" id="searchInput" placeholder="请输入影片名称...">
+      <button onclick="searchMovies()">搜索</button>
     </div>
   </header>
   
@@ -46,30 +51,31 @@
   </nav>
   
   <!-- 分类标签 -->
-  <section class="categories">
-    <button>国产影片</button>
-    <button>中文字幕</button>
-    <button>欧美影片</button>
-    <button>动漫专区</button>
-    <button>VR专区</button>
-    <button>日本有码</button>
-    <button>日本无码</button>
-    <button>制服诱惑</button>
-    <button>学生妹</button>
-    <button>SM调教</button>
-    <button>人妻熟女</button>
-    <button>剧情大片</button>
+  <section class="categories" id="categoryButtons">
+    <button class="active" onclick="filterCategory('全部', this)">全部</button>
+    <button onclick="filterCategory('国产影片', this)">国产影片</button>
+    <button onclick="filterCategory('中文字幕', this)">中文字幕</button>
+    <button onclick="filterCategory('欧美影片', this)">欧美影片</button>
+    <button onclick="filterCategory('动漫专区', this)">动漫专区</button>
+    <button onclick="filterCategory('VR专区', this)">VR专区</button>
+    <button onclick="filterCategory('日本有码', this)">日本有码</button>
+    <button onclick="filterCategory('日本无码', this)">日本无码</button>
+    <button onclick="filterCategory('制服诱惑', this)">制服诱惑</button>
+    <button onclick="filterCategory('学生妹', this)">学生妹</button>
+    <button onclick="filterCategory('SM调教', this)">SM调教</button>
+    <button onclick="filterCategory('人妻熟女', this)">人妻熟女</button>
+    <button onclick="filterCategory('剧情大片', this)">剧情大片</button>
   </section>
   
   <!-- 公告 -->
   <section class="notice">
     📢 欢迎访问本站！本站为静态资源站演示模版，所有数据需手动更新。<br>
-    👉 如果需要展示更多功能，可以扩展分页、分类页。<br>
+    👉 点击分类按钮，可以筛选出对应影片，并且按钮会高亮。<br>
     👉 本页面支持直接部署到 GitHub Pages，无需后台。
   </section>
   
   <!-- 表格 -->
-  <table>
+  <table id="movieTable">
     <thead>
       <tr>
         <th>影片名称</th>
@@ -97,12 +103,61 @@
         <td>2025-08-15</td>
         <td><a href="#">查看</a></td>
       </tr>
+      <tr>
+        <td>示例影片 004</td>
+        <td>剧情大片</td>
+        <td>2025-08-14</td>
+        <td><a href="#">查看</a></td>
+      </tr>
     </tbody>
   </table>
+  
+  <!-- 分页 -->
+  <div class="pagination">
+    <a href="page1.html">« 上一页</a>
+    <a href="page1.html" class="active">1</a>
+    <a href="page2.html">2</a>
+    <a href="page3.html">3</a>
+    <a href="page2.html">下一页 »</a>
+  </div>
   
   <!-- 页脚 -->
   <footer>
     © 2025 奶香资源站 - 静态演示模版 | GitHub Pages 部署
   </footer>
+
+  <!-- 分类筛选 + 搜索脚本 -->
+  <script>
+    function filterCategory(category, button) {
+      // 高亮当前按钮
+      let buttons = document.querySelectorAll("#categoryButtons button");
+      buttons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      // 过滤表格
+      let rows = document.querySelectorAll("#movieTable tbody tr");
+      rows.forEach(row => {
+        let type = row.cells[1].innerText;
+        if (category === "全部" || type === category) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    }
+
+    function searchMovies() {
+      let input = document.getElementById("searchInput").value.toLowerCase();
+      let rows = document.querySelectorAll("#movieTable tbody tr");
+      rows.forEach(row => {
+        let title = row.cells[0].innerText.toLowerCase();
+        if (title.includes(input)) {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    }
+  </script>
 </body>
 </html>
