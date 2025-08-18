@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eros（愛欲之神）</title>
+  <title>奶香资源站</title>
   <style>
     body { margin:0; font-family:"Microsoft YaHei",Arial,sans-serif; background:#f9f9f9; }
-    a { text-decoration:none; color:inherit; }
     header { background:#f36; color:#fff; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; }
     header h1 { font-size:22px; margin:0; }
     header .search { display:flex; gap:5px; }
@@ -16,24 +15,27 @@
     nav a { color:#fff; font-weight:bold; }
     .categories { display:grid; grid-template-columns: repeat(auto-fill,minmax(120px,1fr)); gap:10px; padding:15px 20px; background:#fff; border-bottom:2px solid #eee; }
     .categories button { padding:8px; border:none; background:#ffe6f0; border-radius:5px; cursor:pointer; transition:0.3s; font-size:14px; }
-    .categories button:hover { background:#f36; color:#fff; }
     .categories button.active { background:#f36; color:#fff; font-weight:bold; }
-    .notice { margin:15px 20px; background:#fff8fb; padding:10px; border:1px solid #fcd; border-radius:5px; font-size:14px; line-height:1.6; }
-    table { width:calc(100% - 40px); margin:20px auto; border-collapse:collapse; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
-    th, td { padding:10px; border:1px solid #eee; text-align:center; font-size:14px; }
-    th { background:#ffe6f0; font-weight:bold; }
-    tbody tr:hover { background:#fff5fa; }
-    .pagination { display:flex; justify-content:center; gap:8px; margin:20px; }
-    .pagination a { padding:6px 12px; border:1px solid #ddd; border-radius:4px; background:#fff; color:#f36; font-size:14px; }
-    .pagination a:hover { background:#f36; color:#fff; }
-    .pagination .active { background:#f36; color:#fff; font-weight:bold; }
+    .movies { display:grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap:15px; padding:20px; }
+    .movie-card { background:#fff; border:1px solid #eee; border-radius:8px; overflow:hidden; box-shadow:0 2px 5px rgba(0,0,0,0.05); transition:0.3s; }
+    .movie-card:hover { transform:translateY(-3px); box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+    .movie-card img { width:100%; height:280px; object-fit:cover; }
+    .movie-info { padding:10px; font-size:14px; }
+    .movie-info h3 { margin:0 0 6px; font-size:16px; color:#333; }
+    .movie-info p { margin:2px 0; color:#666; font-size:13px; }
+    .movie-info a { display:inline-block; margin-top:8px; padding:5px 10px; background:#f36; color:#fff; border-radius:4px; font-size:13px; text-decoration:none; }
+    .movie-info a:hover { background:#d02450; }
+    .pagination { display:flex; justify-content:center; gap:8px; margin:20px; flex-wrap:wrap; }
+    .pagination button { padding:6px 12px; border:1px solid #ddd; border-radius:4px; background:#fff; color:#f36; cursor:pointer; }
+    .pagination button.active { background:#f36; color:#fff; font-weight:bold; }
+    .pagination button:disabled { color:#aaa; cursor:not-allowed; }
     footer { text-align:center; padding:15px; font-size:13px; color:#666; background:#fefefe; margin-top:20px; border-top:1px solid #eee; }
   </style>
 </head>
 <body>
   <!-- 顶部 -->
   <header>
-    <h1>Eros（愛欲之神）</h1>
+    <h1>奶香资源站</h1>
     <div class="search">
       <input type="text" id="searchInput" placeholder="请输入影片名称...">
       <button onclick="searchMovies()">搜索</button>
@@ -53,111 +55,123 @@
   <!-- 分类标签 -->
   <section class="categories" id="categoryButtons">
     <button class="active" onclick="filterCategory('全部', this)">全部</button>
-    <button onclick="filterCategory('4K歐美', this)">4K歐美</button>
-    <button onclick="filterCategory('4K中文', this)">4K中文</button>
-    <button onclick="filterCategory('4K日本', this)">4K日本</button>
-    <button onclick="filterCategory('4K韓國', this)">4K韓國</button>
-    <button onclick="filterCategory('2K歐美', this)">2K歐美</button>
-    <button onclick="filterCategory('2K中文', this)">2K中文</button>
-    <button onclick="filterCategory('2K日本', this)">2K日本</button>
-    <button onclick="filterCategory('2K韓國', this)">2K韓國</button>
-    <button onclick="filterCategory('1080P歐美', this)">1080P歐美</button>
-    <button onclick="filterCategory('1080P中文', this)">1080P中文</button>
-    <button onclick="filterCategory('1080P日本', this)">1080P日本</button>
-    <button onclick="filterCategory('1080P韓國', this)">1080P韓國</button>
+    <button onclick="filterCategory('国产影片', this)">国产影片</button>
+    <button onclick="filterCategory('中文字幕', this)">中文字幕</button>
+    <button onclick="filterCategory('欧美影片', this)">欧美影片</button>
+    <button onclick="filterCategory('剧情大片', this)">剧情大片</button>
   </section>
   
-  <!-- 公告 -->
-  <section class="notice">
-    📢 欢迎访问本站！本站为静态资源站演示模版，所有数据需手动更新。<br>
-    👉 点击分类按钮，可以筛选出对应影片，并且按钮会高亮。<br>
-    👉 本页面支持直接部署到 GitHub Pages，无需后台。
-  </section>
-  
-  <!-- 表格 -->
-  <table id="movieTable">
-    <thead>
-      <tr>
-        <th>影片名称</th>
-        <th>分类</th>
-        <th>更新时间</th>
-        <th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>示例影片 001</td>
-        <td>中文字幕</td>
-        <td>2025-08-18</td>
-        <td><a href="#">查看</a></td>
-      </tr>
-      <tr>
-        <td>示例影片 002</td>
-        <td>欧美影片</td>
-        <td>2025-08-17</td>
-        <td><a href="#">查看</a></td>
-      </tr>
-      <tr>
-        <td>示例影片 003</td>
-        <td>国产影片</td>
-        <td>2025-08-15</td>
-        <td><a href="#">查看</a></td>
-      </tr>
-      <tr>
-        <td>示例影片 004</td>
-        <td>剧情大片</td>
-        <td>2025-08-14</td>
-        <td><a href="#">查看</a></td>
-      </tr>
-    </tbody>
-  </table>
-  
+  <!-- 影片展示区域 -->
+  <section class="movies" id="movieList"></section>
+
   <!-- 分页 -->
-  <div class="pagination">
-    <a href="page1.html">« 上一页</a>
-    <a href="page1.html" class="active">1</a>
-    <a href="page2.html">2</a>
-    <a href="page3.html">3</a>
-    <a href="page2.html">下一页 »</a>
-  </div>
+  <div class="pagination" id="pagination"></div>
   
   <!-- 页脚 -->
   <footer>
-    © 2025 奶香资源站 - 静态演示模版 | GitHub Pages 部署
+    © 2025 奶香资源站 - JSON 数据驱动分页版 | GitHub Pages 部署
   </footer>
 
-  <!-- 分类筛选 + 搜索脚本 -->
+  <!-- JSON 加载 + 分类/搜索 + 分页 -->
   <script>
+    let moviesData = [];
+    let currentCategory = "全部";
+    let currentPage = 1;
+    const itemsPerPage = 20;
+
+    async function loadMovies() {
+      const res = await fetch("movies.json");
+      moviesData = await res.json();
+      renderMovies();
+    }
+
+    function getFilteredMovies() {
+      let searchValue = document.getElementById("searchInput").value.toLowerCase();
+      return moviesData.filter(m => {
+        let matchCategory = (currentCategory === "全部" || m.category === currentCategory);
+        let matchSearch = (m.title.toLowerCase().includes(searchValue));
+        return matchCategory && matchSearch;
+      });
+    }
+
+    function renderMovies() {
+      let list = document.getElementById("movieList");
+      list.innerHTML = "";
+
+      let filtered = getFilteredMovies();
+      let totalPages = Math.ceil(filtered.length / itemsPerPage);
+
+      if (currentPage > totalPages) currentPage = totalPages || 1;
+
+      let start = (currentPage - 1) * itemsPerPage;
+      let end = start + itemsPerPage;
+      let pageItems = filtered.slice(start, end);
+
+      pageItems.forEach(m => {
+        let card = `
+          <div class="movie-card">
+            <img src="${m.image}" alt="${m.title}">
+            <div class="movie-info">
+              <h3>${m.title}</h3>
+              <p>分类：${m.category}</p>
+              <p>更新：${m.date}</p>
+              <a href="${m.link}" target="_blank">查看</a>
+            </div>
+          </div>
+        `;
+        list.innerHTML += card;
+      });
+
+      if (pageItems.length === 0) {
+        list.innerHTML = "<p style='grid-column:1/-1;text-align:center;color:#999;'>没有找到相关影片</p>";
+      }
+
+      renderPagination(totalPages);
+    }
+
+    function renderPagination(totalPages) {
+      let pagination = document.getElementById("pagination");
+      pagination.innerHTML = "";
+
+      if (totalPages <= 1) return;
+
+      let prevBtn = document.createElement("button");
+      prevBtn.textContent = "« 上一页";
+      prevBtn.disabled = (currentPage === 1);
+      prevBtn.onclick = () => { currentPage--; renderMovies(); };
+      pagination.appendChild(prevBtn);
+
+      for (let i = 1; i <= totalPages; i++) {
+        let btn = document.createElement("button");
+        btn.textContent = i;
+        if (i === currentPage) btn.classList.add("active");
+        btn.onclick = () => { currentPage = i; renderMovies(); };
+        pagination.appendChild(btn);
+      }
+
+      let nextBtn = document.createElement("button");
+      nextBtn.textContent = "下一页 »";
+      nextBtn.disabled = (currentPage === totalPages);
+      nextBtn.onclick = () => { currentPage++; renderMovies(); };
+      pagination.appendChild(nextBtn);
+    }
+
     function filterCategory(category, button) {
-      // 高亮当前按钮
+      currentCategory = category;
+      currentPage = 1;
       let buttons = document.querySelectorAll("#categoryButtons button");
       buttons.forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
-
-      // 过滤表格
-      let rows = document.querySelectorAll("#movieTable tbody tr");
-      rows.forEach(row => {
-        let type = row.cells[1].innerText;
-        if (category === "全部" || type === category) {
-          row.style.display = "";
-        } else {
-          row.style.display = "none";
-        }
-      });
+      renderMovies();
     }
 
     function searchMovies() {
-      let input = document.getElementById("searchInput").value.toLowerCase();
-      let rows = document.querySelectorAll("#movieTable tbody tr");
-      rows.forEach(row => {
-        let title = row.cells[0].innerText.toLowerCase();
-        if (title.includes(input)) {
-          row.style.display = "";
-        } else {
-          row.style.display = "none";
-        }
-      });
+      currentPage = 1;
+      renderMovies();
     }
+
+    // 初始化加载
+    loadMovies();
   </script>
 </body>
 </html>
