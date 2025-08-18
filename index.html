@@ -111,29 +111,32 @@
       const pageItems = filtered.slice(start, start + itemsPerPage);
 
       pageItems.forEach(m => {
-        const size = (typeof m.size_gb === "number") ? m.size_gb.toFixed(1) + " GB" : (m.size_gb || "");
-        const reso = m.resolution || "";
-        const date = m.date || "";
-        const img = m.image || "";
-        const title = m.title || "未命名";
-        const link = m.link || "#";
+  const size = (typeof m.size_gb === "number") ? m.size_gb.toFixed(1) + " GB" : (m.size_gb || "");
+  const reso = m.resolution || "";
+  const date = m.date || "";
+  const duration = (typeof m.duration === "number") ? m.duration + " 分钟" : (m.duration || "");
+  const img = m.image || "";
+  const title = m.title || "未命名";
+  const link = m.link || "#";
 
-        list.insertAdjacentHTML("beforeend", `
-          <div class="movie-card">
-            <img src="${img}" alt="${title}" loading="lazy" />
-            <div class="movie-info">
-              <h3 title="${title}">${title}</h3>
-              <div class="meta">
-                <span class="tag">${m.category || "未分类"}</span>
-                ${reso ? `<span class="tag">${reso}</span>` : ""}
-                ${size ? `<span class="tag">${size}</span>` : ""}
-                ${date ? `<span class="tag">${date}</span>` : ""}
-              </div>
-              <a href="${link}" target="_blank" rel="nofollow noopener">查看</a>
-            </div>
-          </div>
-        `);
-      });
+  list.insertAdjacentHTML("beforeend", `
+    <div class="movie-card">
+      <img src="${img}" alt="${title}" loading="lazy" />
+      <div class="movie-info">
+        <h3 title="${title}">${title}</h3>
+        <div class="meta">
+          <span class="tag">${m.category || "未分类"}</span>
+          ${reso ? `<span class="tag">${reso}</span>` : ""}
+          ${size ? `<span class="tag">${size}</span>` : ""}
+          ${duration ? `<span class="tag">${duration}</span>` : ""}
+          ${date ? `<span class="tag">${date}</span>` : ""}
+        </div>
+        <a href="${link}" target="_blank" rel="nofollow noopener">查看</a>
+      </div>
+    </div>
+  `);
+});
+
 
       if (pageItems.length === 0) {
         list.innerHTML = "<p style='grid-column:1/-1;text-align:center;color:#999;'>没有找到相关影片</p>";
