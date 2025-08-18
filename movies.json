@@ -4,14 +4,14 @@
     "category": "国产影片",
     "date": "2025-08-01",
     "image": "https://picsum.photos/200/280?random=1",
-    "link": "www.baidu.com"
+    "link": "www.baidu.com/"
   },
   {
     "title": "示例影片 002",
     "category": "中文字幕",
     "date": "2025-08-02",
     "image": "https://picsum.photos/200/280?random=2",
-    "link": "#"
+    "link": "https://www.youtube.com/"
   },
   {
     "title": "示例影片 003",
