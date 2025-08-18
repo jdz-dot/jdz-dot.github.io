@@ -1,0 +1,31 @@
+[
+  {
+    "title": "示例影片 001",
+    "category": "国产影片",
+    "date": "2025-08-01",
+    "image": "https://picsum.photos/200/280?random=1",
+    "link": "#"
+  },
+  {
+    "title": "示例影片 002",
+    "category": "中文字幕",
+    "date": "2025-08-02",
+    "image": "https://picsum.photos/200/280?random=2",
+    "link": "#"
+  },
+  {
+    "title": "示例影片 003",
+    "category": "欧美影片",
+    "date": "2025-08-03",
+    "image": "https://picsum.photos/200/280?random=3",
+    "link": "#"
+  },
+  {
+    "title": "示例影片 004",
+    "category": "剧情大片",
+    "date": "2025-08-04",
+    "image": "https://picsum.photos/200/280?random=4",
+    "link": "#"
+  }
+  /* ===== 从 005 到 060 依次类推 ===== */
+]
