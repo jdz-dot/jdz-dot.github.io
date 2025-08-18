@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>奶香资源站</title>
+  <title>Eros（愛欲之神）资源站</title>
   <style>
     body { margin:0; font-family:"Microsoft YaHei",Arial,sans-serif; background:#f9f9f9; }
     header { background:#f36; color:#fff; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; }
@@ -35,7 +35,7 @@
 </head>
 <body>
   <header>
-    <h1>奶香资源站</h1>
+    <h1>Eros（愛欲之神）资源站</h1>
     <div class="search">
       <input type="text" id="searchInput" placeholder="请输入影片名称..." />
       <button onclick="searchMovies()">搜索</button>
@@ -62,7 +62,7 @@
   <section class="movies" id="movieList"></section>
   <div class="pagination" id="pagination"></div>
 
-  <footer>© 2025 奶香资源站 - JSON 数据驱动分页版 | GitHub Pages 部署</footer>
+  <footer>© 2025 Eros（愛欲之神）资源站 - 优质资源网 | Eros（愛欲之神） 部署</footer>
 
   <script>
     let moviesData = [];
@@ -113,7 +113,7 @@
       pageItems.forEach(m => {
   const size = (typeof m.size_gb === "number") ? m.size_gb.toFixed(1) + " GB" : (m.size_gb || "");
   const reso = m.resolution || "";
-  const date = m.date || "";
+// const date = m.date || "";
   const duration = (typeof m.duration === "number") ? m.duration + " 分钟" : (m.duration || "");
   const img = m.image || "";
   const title = m.title || "未命名";
