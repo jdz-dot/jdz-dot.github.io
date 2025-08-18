@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>采集教程 - 奶香资源站</title>
+  <style>
+    body { margin:0; font-family:"Microsoft YaHei",Arial,sans-serif; background:#f9f9f9; }
+    header { background:#f36; color:#fff; padding:10px 20px; }
+    header h1 { margin:0; font-size:22px; }
+    nav { background:#ff6699; display:flex; flex-wrap:wrap; padding:10px 20px; gap:15px; }
+    nav a { color:#fff; font-weight:bold; }
+    .content { max-width:900px; margin:20px auto; padding:20px; background:#fff; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+    h2 { color:#f36; margin-bottom:10px; }
+    p { line-height:1.7; margin-bottom:15px; }
+    pre { background:#f6f6f6; padding:10px; border-radius:5px; overflow-x:auto; }
+    footer { text-align:center; padding:15px; font-size:13px; color:#666; background:#fefefe; margin-top:30px; border-top:1px solid #eee; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>采集教程</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">首页</a>
+    <a href="#">演示站</a>
+    <a href="tutorial.html">采集教程</a>
+    <a href="#">苹果cmsv10模版</a>
+    <a href="#">TG交流群</a>
+    <a href="#">福利赞助</a>
+  </nav>
+
+  <main class="content">
+    <h2>1. 环境准备</h2>
+    <p>确保你已经搭建好 <strong>GitHub Pages</strong> 或本地服务器，并具备基础的 HTML / JSON 编辑能力。</p>
+
+    <h2>2. JSON 数据采集</h2>
+    <p>影片信息统一写入 <code>movies.json</code>，包括标题、分类、日期、封面、大小、分辨率和片长等字段。</p>
+    <pre>{
+  "title": "示例影片 001",
+  "category": "中文字幕",
+  "date": "2025-08-18",
+  "image": "images/movie1.jpg",
+  "link": "#",
+  "size_gb": 4.2,
+  "resolution": "4K",
+  "duration": 125
+}</pre>
+
+    <h2>3. 页面渲染</h2>
+    <p>前端通过 <code>fetch("movies.json")</code> 动态加载影片数据，并支持搜索、分类筛选和分页展示。</p>
+
+    <h2>4. 更新与维护</h2>
+    <p>只需更新 <code>movies.json</code> 文件即可完成影片更新，无需修改 HTML。</p>
+
+    <h2>5. 常见问题</h2>
+    <p>如果 GitHub Pages 部署后出现 <code>fetch</code> 读取不到 JSON，请确认 <code>movies.json</code> 路径与页面在同一目录。</p>
+  </main>
+
+  <footer>
+    © 2025 奶香资源站 - 采集教程
+  </footer>
+</body>
+</html>
