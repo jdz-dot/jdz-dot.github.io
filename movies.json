@@ -6,7 +6,8 @@
     "image": "https://picsum.photos/200/280?random=60",
     "link": "#",
     "size_gb": 4.7,
-    "resolution": "4K"
+    "resolution": "4K",
+    "duration": 125
   },
   {
     "title": "示例影片 059",
@@ -15,7 +16,8 @@
     "image": "https://picsum.photos/200/280?random=59",
     "link": "#",
     "size_gb": 3.2,
-    "resolution": "1080p"
+    "resolution": "1080p",
+    "duration": 98
   },
   {
     "title": "示例影片 058",
@@ -24,87 +26,7 @@
     "image": "https://picsum.photos/200/280?random=58",
     "link": "#",
     "size_gb": 5.1,
-    "resolution": "4K"
-  },
-  {
-    "title": "示例影片 057",
-    "category": "剧情大片",
-    "date": "2025-08-17",
-    "image": "https://picsum.photos/200/280?random=57",
-    "link": "#",
-    "size_gb": 2.4,
-    "resolution": "720p"
-  },
-  {
-    "title": "示例影片 056",
-    "category": "中文字幕",
-    "date": "2025-08-16",
-    "image": "https://picsum.photos/200/280?random=56",
-    "link": "#",
-    "size_gb": 6.0,
-    "resolution": "4K"
-  },
-  {
-    "title": "示例影片 055",
-    "category": "欧美影片",
-    "date": "2025-08-16",
-    "image": "https://picsum.photos/200/280?random=55",
-    "link": "#",
-    "size_gb": 1.9,
-    "resolution": "1080p"
-  },
-  {
-    "title": "示例影片 054",
-    "category": "国产影片",
-    "date": "2025-08-15",
-    "image": "https://picsum.photos/200/280?random=54",
-    "link": "#",
-    "size_gb": 4.0,
-    "resolution": "4K"
-  },
-  {
-    "title": "示例影片 053",
-    "category": "剧情大片",
-    "date": "2025-08-15",
-    "image": "https://picsum.photos/200/280?random=53",
-    "link": "#",
-    "size_gb": 2.1,
-    "resolution": "1080p"
-  },
-  {
-    "title": "示例影片 052",
-    "category": "中文字幕",
-    "date": "2025-08-14",
-    "image": "https://picsum.photos/200/280?random=52",
-    "link": "#",
-    "size_gb": 3.8,
-    "resolution": "4K"
-  },
-  {
-    "title": "示例影片 051",
-    "category": "欧美影片",
-    "date": "2025-08-14",
-    "image": "https://picsum.photos/200/280?random=51",
-    "link": "#",
-    "size_gb": 2.7,
-    "resolution": "1080p"
-  },
-  {
-    "title": "示例影片 050",
-    "category": "国产影片",
-    "date": "2025-08-13",
-    "image": "https://picsum.photos/200/280?random=50",
-    "link": "#",
-    "size_gb": 5.6,
-    "resolution": "4K"
-  },
-  {
-    "title": "示例影片 049",
-    "category": "剧情大片",
-    "date": "2025-08-13",
-    "image": "https://picsum.photos/200/280?random=49",
-    "link": "#",
-    "size_gb": 1.5,
-    "resolution": "720p"
+    "resolution": "4K",
+    "duration": 143
   }
 ]
