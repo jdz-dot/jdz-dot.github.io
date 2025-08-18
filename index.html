@@ -113,7 +113,7 @@
       pageItems.forEach(m => {
   const size = (typeof m.size_gb === "number") ? m.size_gb.toFixed(1) + " GB" : (m.size_gb || "");
   const reso = m.resolution || "";
-// const date = m.date || "";
+  const date = m.date || "";
   const duration = (typeof m.duration === "number") ? m.duration + " 分钟" : (m.duration || "");
   const img = m.image || "";
   const title = m.title || "未命名";
