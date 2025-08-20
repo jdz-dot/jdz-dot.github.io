@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Eros（愛欲之神）资源站</title>
+  <title>Eros（愛欲之神）資源站</title>
   <style>
     body { margin:0; font-family:"Microsoft YaHei",Arial,sans-serif; background:#f9f9f9; }
     header { background:#f36; color:#fff; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; }
@@ -35,32 +35,32 @@
 </head>
 <body>
   <header>
-    <h1>Eros（愛欲之神）资源站</h1>
+    <h1>Eros（愛欲之神）資源站</h1>
     <div class="search">
-      <input type="text" id="searchInput" placeholder="请输入影片名称..." />
+      <input type="text" id="searchInput" placeholder="請輸入影片名稱..." />
       <button onclick="searchMovies()">搜索</button>
     </div>
   </header>
 
   <nav>
-    <a href="index.html">首页</a>
-    <a href="guanyu.html">关于我们</a>
-    <a href="lianxi.html">联系我们</a>
-    <a href="tutorial.html">下载教程</a>
+    <a href="index.html">首頁</a>
+    <a href="guanyu.html">關於我們</a>
+    <a href="lianxi.html">聯繫我們</a>
+    <a href="tutorial.html">下載教程</a>
   </nav>
 
   <section class="categories" id="categoryButtons">
     <button class="active" onclick="filterCategory('全部', this)">全部</button>
-    <button onclick="filterCategory('欧美资源', this)">欧美资源</button>
-    <button onclick="filterCategory('中文资源', this)">中文资源</button>
-    <button onclick="filterCategory('日本资源', this)">日本资源</button>
-    <button onclick="filterCategory('韩国资源', this)">韩国资源</button>
+    <button onclick="filterCategory('歐美資源', this)">歐美資源</button>
+    <button onclick="filterCategory('中文資源', this)">中文資源</button>
+    <button onclick="filterCategory('日本資源', this)">日本資源</button>
+    <button onclick="filterCategory('韓國資源', this)">韓國資源</button>
   </section>
 
   <section class="movies" id="movieList"></section>
   <div class="pagination" id="pagination"></div>
 
-  <footer>© 2025 Eros（愛欲之神）资源站 - 优质资源网 | Eros（愛欲之神） 部署</footer>
+  <footer>© 2025 Eros（愛欲之神）資源站 - 優質資源網 | Eros（愛欲之神） 部署</footer>
 
   <script>
     let moviesData = [];
@@ -72,9 +72,9 @@
       const res = await fetch("movies.json");
       const data = await res.json();
 
-      // ✅ 按日期降序排序（最新在前）
+      // ✅ 按日期降冪排序（最新在前）
       moviesData = data.sort((a, b) => {
-        // 确保日期统一为 YYYY-MM-DD；无效值排后
+        // 確保日期統一為 YYYY-MM-DD；無效值排後
         const da = Date.parse(a.date || "");
         const db = Date.parse(b.date || "");
         if (isNaN(da) && isNaN(db)) return 0;
@@ -92,7 +92,7 @@
         const byCategory = (currentCategory === "全部" || m.category === currentCategory);
         const bySearch =
           (m.title || "").toLowerCase().includes(q) ||
-          (m.resolution || "").toLowerCase().includes(q); // 可按分辨率搜：如 4k、1080p
+          (m.resolution || "").toLowerCase().includes(q); // 可按解析度搜：如 4k、1080p
         return byCategory && bySearch;
       });
     }
@@ -112,7 +112,7 @@
   const size = (typeof m.size_gb === "number") ? m.size_gb.toFixed(1) + " GB" : (m.size_gb || "");
   const reso = m.resolution || "";
   const date = m.date || "";
-  const duration = (typeof m.duration === "number") ? m.duration + " 分钟" : (m.duration || "");
+  const duration = (typeof m.duration === "number") ? m.duration + " 分鐘" : (m.duration || "");
   const img = m.image || "";
   const title = m.title || "未命名";
   const link = m.link || "#";
@@ -123,13 +123,13 @@
       <div class="movie-info">
         <h3 title="${title}">${title}</h3>
         <div class="meta">
-          <span class="tag">${m.category || "未分类"}</span>
+          <span class="tag">${m.category || "未分類"}</span>
           ${reso ? `<span class="tag">${reso}</span>` : ""}
           ${size ? `<span class="tag">${size}</span>` : ""}
           ${duration ? `<span class="tag">${duration}</span>` : ""}
           ${date ? `<span class="tag">${date}</span>` : ""}
         </div>
-        <a href="${link}" target="_blank" rel="nofollow noopener">购买下载地址</a>
+        <a href="${link}" target="_blank" rel="nofollow noopener">購買下載地址</a>
       </div>
     </div>
   `);
@@ -137,7 +137,7 @@
 
 
       if (pageItems.length === 0) {
-        list.innerHTML = "<p style='grid-column:1/-1;text-align:center;color:#999;'>没有找到相关影片</p>";
+        list.innerHTML = "<p style='grid-column:1/-1;text-align:center;color:#999;'>沒有找到相關影片</p>";
       }
 
       renderPagination(totalPages);
@@ -156,9 +156,9 @@
         p.appendChild(b);
       };
 
-      addBtn("« 上一页", currentPage === 1, () => { currentPage--; renderMovies(); });
+      addBtn("« 上一頁", currentPage === 1, () => { currentPage--; renderMovies(); });
 
-      // 简洁页码：最多显示 7 个（含当前）
+      // 簡潔頁碼：最多顯示 7 個（含當前）
       const max = 7;
       let start = Math.max(1, currentPage - Math.floor(max / 2));
       let end = Math.min(totalPages, start + max - 1);
@@ -172,7 +172,7 @@
         p.appendChild(b);
       }
 
-      addBtn("下一页 »", currentPage === totalPages, () => { currentPage++; renderMovies(); });
+      addBtn("下一頁 »", currentPage === totalPages, () => { currentPage++; renderMovies(); });
     }
 
     function filterCategory(cat, btn) {
